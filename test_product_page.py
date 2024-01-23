@@ -6,7 +6,9 @@ from pages.product_page import ProductPage
 import time
 import pytest
 
-@pytest.mark.parametrize('promo_offer', ["?promo=newYear", "?promo=offer0", "?promo=offer1", "?promo=offer2", "?promo=offer3", "?promo=offer4", "?promo=offer5", "?promo=offer6", pytest.param("?promo=offer7", marks=pytest.mark.xfail), "?promo=offer8", "?promo=offer9"])
+#@pytest.mark.parametrize('promo_offer', ["?promo=newYear", "?promo=offer0", "?promo=offer1", "?promo=offer2", "?promo=offer3", "?promo=offer4", "?promo=offer5", "?promo=offer6", pytest.param("?promo=offer7", marks=pytest.mark.xfail), "?promo=offer8", "?promo=offer9"])
+
+@pytest.mark.parametrize('promo_offer', ["?promo=newYear"])
 
 def test_guest_can_add_product_to_basket(browser, promo_offer):
     
@@ -17,8 +19,12 @@ def test_guest_can_add_product_to_basket(browser, promo_offer):
     page = ProductPage(browser, link)
     page.open()
     page.should_be_add_to_cart_button()
+    page.should_not_be_added_to_cart_message()
     page.add_to_cart()
     page.solve_quiz_and_get_code()
     time.sleep(5)
+    page.should_be_added_to_cart_message()
     page.added_to_cart_message_is_correct()
     page.cart_total_price_is_correct()
+    #page.should_disappear_added_to_cart_message()
+

@@ -9,7 +9,7 @@ class LoginPageLocators():
 
 class ProductPageLocators():
     ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, ".btn-add-to-basket")
-    ADDED_TO_CART_MESSAGE = (By.CSS_SELECTOR, "div.alert-success:nth-child(1).alertinner")
+    ADDED_TO_CART_MESSAGE = (By.CSS_SELECTOR, "div.alertinner")
     ADDED_TO_CART_PRODUCT_NAME = (By.CSS_SELECTOR, "div.alert-success strong")
     PRODUCT_NAME = (By.CSS_SELECTOR, "div.product_main h1")
     CART_TOTAL_MESSAGE = (By.CSS_SELECTOR, ".alert-info")
