@@ -15,7 +15,7 @@ class ProductPage(BasePage):
     def added_to_cart_message_is_correct(self):
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
         added_to_cart_product_name = self.browser.find_element(*ProductPageLocators.ADDED_TO_CART_PRODUCT_NAME).text
-        assert product_name in added_to_cart_product_name, "Incorrect message"
+        assert product_name == added_to_cart_product_name, "Incorrect message"
 
     def should_be_cart_total_message(self):
         assert self.is_element_present(*ProductPageLocators.CART_TOTAL_MESSAGE), "No cart total message"
