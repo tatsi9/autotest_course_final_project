@@ -6,44 +6,44 @@ from .locators import BasketPageLocators
 class ProductPage(BasePage):
 
     #метод-нажать кнопку "Добавить в корзину"
-    def add_to_cart(self):
-       add_to_cart_button = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON) 
-       add_to_cart_button.click()
+    def add_to_basket(self):
+       add_to_basket_button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON) 
+       add_to_basket_button.click()
     
     #должна быть кнопка "Добавить в корзину"
-    def should_be_add_to_cart_button(self):
-        assert self.is_element_present(*ProductPageLocators.ADD_TO_CART_BUTTON), "Add to cart button is not present"
+    def should_be_add_to_basket_button(self):
+        assert self.is_element_present(*ProductPageLocators.ADD_TO_BASKET_BUTTON), "Add to basket button is not present"
     
     #должно быть сообщение об успешном довадении товара в корзину
-    def should_be_added_to_cart_message(self):
-        assert self.is_element_present(*ProductPageLocators.ADDED_TO_CART_MESSAGE), "Added-to-cart message is not present"
+    def should_be_added_to_basket_message(self):
+        assert self.is_element_present(*ProductPageLocators.ADDED_TO_BASKET_MESSAGE), "Added-to-basket message is not present"
     
 
     #Название товара в сообщении должно совпадать с тем товаром, который вы добавили
-    def added_to_cart_message_is_correct(self):
+    def added_to_basket_message_is_correct(self):
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
-        added_to_cart_product_name = self.browser.find_element(*ProductPageLocators.ADDED_TO_CART_PRODUCT_NAME).text
-        assert product_name == added_to_cart_product_name, "Incorrect message"
+        added_to_basket_product_name = self.browser.find_element(*ProductPageLocators.ADDED_TO_BASKET_PRODUCT_NAME).text
+        assert product_name == added_to_basket_product_name, "Incorrect message"
     
     #должно быть сообщение с общей стоимостью товаров к корзине
-    def should_be_cart_total_message(self):
-        assert self.is_element_present(*ProductPageLocators.CART_TOTAL_MESSAGE), "No cart total message"
+    def should_be_basket_total_message(self):
+        assert self.is_element_present(*ProductPageLocators.BASKET_TOTAL_MESSAGE), "No basket total message"
     
     #стоимость, указанная в корзине, должна совпадать со стоимостью добавленной книги
-    def cart_total_price_is_correct(self):
+    def basket_total_price_is_correct(self):
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
-        cart_total_price = self.browser.find_element(*ProductPageLocators.CART_TOTAL_MESSAGE_PRICE).text
-        assert product_price == cart_total_price, "Incorrect cart total price"
+        basket_total_price = self.browser.find_element(*ProductPageLocators.BASKET_TOTAL_MESSAGE_PRICE).text
+        assert product_price == basket_total_price, "Incorrect basket total price"
     
     #ожидаем, что там нет сообщения об успешном добавлении в корзину
-    def should_not_be_added_to_cart_message(self):
-        assert self.is_not_element_present(*ProductPageLocators.ADDED_TO_CART_MESSAGE), \
-        "Success added-to-cart message is presented, but should not be"
+    def should_not_be_added_to_basket_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.ADDED_TO_BASKET_MESSAGE), \
+        "Success added-to-basket message is presented, but should not be"
 
     #элемент присутствует на странице и должен исчезнуть
-    def should_disappear_added_to_cart_message(self):
-        assert self.is_disappeared(*ProductPageLocators.ADDED_TO_CART_MESSAGE), \
-        "Success added-to-cart message is not disappeared, but should be"
+    def should_disappear_added_to_basket_message(self):
+        assert self.is_disappeared(*ProductPageLocators.ADDED_TO_BASKET_MESSAGE), \
+        "Success added-to-basket message is not disappeared, but should be"
     
 
     
