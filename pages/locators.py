@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 class BasePageLocators(): # добавлено в п.4.3.8
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    BASKET_LINK = (By.PARTIAL_LINK_TEXT, "basket")
+    ##BASKET_LINK = (By.CSS_SELECTOR, "a.btn.btn_default")#не работает
 
 #class MainPageLocators():
     #LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
@@ -19,3 +21,7 @@ class ProductPageLocators():
     CART_TOTAL_MESSAGE = (By.CSS_SELECTOR, ".alert-info")
     CART_TOTAL_MESSAGE_PRICE = (By.CSS_SELECTOR, ".alert-info .alertinner strong")
     PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main .price_color")
+
+class BasketPageLocators():
+    BASKET_PRODUCTS = (By.CSS_SELECTOR, "#basket_formset")
+    BASKET_EMPTY_MESSAGE = (By.CSS_SELECTOR, "#content_inner>p")

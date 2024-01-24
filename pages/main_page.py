@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from selenium.webdriver.common.by import By
-from .locators import MainPageLocators             # урок 4.2.7
+from .locators import BasePageLocators             # урок 4.2.7 > 4.3.10
 from .login_page import LoginPage
 
 
