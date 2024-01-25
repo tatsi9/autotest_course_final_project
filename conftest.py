@@ -16,6 +16,7 @@ def pytest_addoption(parser):
 # Fixture for initializing and quitting the browser
 @pytest.fixture(scope="function")
 def browser(request):
+
     # Getting the browser name from the command line option
     browser_name = request.config.getoption("browser_name")
     browser = None
@@ -27,6 +28,7 @@ def browser(request):
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
         options = ChromeOptions()
+
         # Setting language preference for Chrome
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
         browser = webdriver.Chrome(options=options)
@@ -34,6 +36,7 @@ def browser(request):
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
         options = FirefoxOptions()
+
         # Setting language preference for Firefox
         options.set_preference("intl.accept_languages", user_language)
         browser = webdriver.Firefox(options=options)

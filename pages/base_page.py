@@ -12,10 +12,10 @@ import time
 import math
 
 class BasePage():
-    def __init__(self, browser, url, timeout=10):  #timeout добавили на шаге 4.2.6
+    def __init__(self, browser, url, timeout=10):  
         self.browser = browser
         self.url = url
-        #self.browser.implicitly_wait(timeout)      #добавили на шаге 4.2.6
+        self.browser.implicitly_wait(timeout)      
 
     def open(self):
         self.browser.get(self.url)     #открывает вебстраницу (вместо browser.get(link))
@@ -35,12 +35,13 @@ class BasePage():
         basket_link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
         basket_link.click()
 
-    def is_element_present(self, how, what):       #добавили на шаге 4.2.6
+    # Метод для перехватывания исключения. args: how (css, id, xpath и тд), what (строку-селектор). try/except
+    def is_element_present(self, how, what):       
         try:
             self.browser.find_element(how, what)
         except (NoSuchElementException):
             return False
-        return True                     # Метод для перехватывания исключения. args: how (css, id, xpath и тд), what (строку-селектор). try/except
+        return True        
 
     #ожидаем, что элемент не появится на странице в течении опр.времени
     def is_not_element_present(self, how, what, timeout=4):
@@ -66,7 +67,7 @@ class BasePage():
         answer = str(math.log(abs((12 * math.sin(float(x))))))
         alert.send_keys(answer)
         alert.accept()
-        time.sleep(5)
+        time.sleep(1)
         try:
             alert = self.browser.switch_to.alert
             alert_text = alert.text

@@ -14,12 +14,11 @@ class ProductPage(BasePage):
     def should_be_add_to_basket_button(self):
         assert self.is_element_present(*ProductPageLocators.ADD_TO_BASKET_BUTTON), "Add to basket button is not present"
     
-    #должно быть сообщение об успешном довадении товара в корзину
+    #должно быть сообщение об успешном добавлении товара в корзину
     def should_be_added_to_basket_message(self):
         assert self.is_element_present(*ProductPageLocators.ADDED_TO_BASKET_MESSAGE), "Added-to-basket message is not present"
     
-
-    #Название товара в сообщении должно совпадать с тем товаром, который вы добавили
+    #название товара в сообщении должно совпадать с тем товаром, который добавили
     def added_to_basket_message_is_correct(self):
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
         added_to_basket_product_name = self.browser.find_element(*ProductPageLocators.ADDED_TO_BASKET_PRODUCT_NAME).text
@@ -35,7 +34,7 @@ class ProductPage(BasePage):
         basket_total_price = self.browser.find_element(*ProductPageLocators.BASKET_TOTAL_MESSAGE_PRICE).text
         assert product_price == basket_total_price, "Incorrect basket total price"
     
-    #ожидаем, что там нет сообщения об успешном добавлении в корзину
+    #ожидаем, что нет сообщения об успешном добавлении в корзину
     def should_not_be_added_to_basket_message(self):
         assert self.is_not_element_present(*ProductPageLocators.ADDED_TO_BASKET_MESSAGE), \
         "Success added-to-basket message is presented, but should not be"
